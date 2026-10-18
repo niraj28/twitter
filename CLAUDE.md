@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-A simple Twitter-like REST backend: users, posts, follows, likes and a feed. Spring Boot 2.4.0-SNAPSHOT, Spring Data JPA, MySQL, Lombok, Java 11, Gradle 6.6.1 wrapper. The README links a Postman collection for the APIs: https://www.getpostman.com/collections/0e906467ec6d1f70a530
+A simple Twitter-like REST backend: users, posts, follows, likes and a feed. Spring Boot 2.7.18, Spring Data JPA, MySQL, Lombok, Java 11, Gradle 7.6.4 wrapper. The README links a Postman collection for the APIs: https://www.getpostman.com/collections/0e906467ec6d1f70a530
 
 ## Architecture
 
@@ -26,6 +26,7 @@ Database: MySQL `twitter` on `localhost:3306`, `server.port=8081`, `ddl-auto=upd
 ./gradlew test --tests 'com.java.twitter.TwitterApplicationTests'
 ```
 
-Build caveats:
-- The Spring Boot plugin version is a **2.4.0-SNAPSHOT** pulled from `repo.spring.io/snapshot`, which may no longer resolve. Switching to `2.4.0` (or later) is the likely fix.
-- The MySQL driver uses the legacy `compile` configuration. It works on the bundled Gradle 6.6.1 but not on Gradle 7+, so use `./gradlew`, not a newer system `gradle`.
+Build notes:
+- Spring Boot 2.7.18 on the Gradle 7.6.4 wrapper, Java 11.
+- The DB password comes from the `DB_PASSWORD` environment variable (`DB_PASSWORD=... ./gradlew bootRun`).
+- RBAC work is in progress, following `RBAC_PLAN.md`.
